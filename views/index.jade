@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  nav(class=['navbar','navbar-default','navbar-static-top','navbar-inverse'])
+    .container-fluid
+      .navbar-header
+        a(class='navbar-brand logo',href='#').
+          SPORT#[span.mblue AGG]
+      div(class='collapse navbar-collapse custom')
+        ul(class=['nav','navbar-nav','navbar-right'])
+          li.active
+            a(href='#') HOME
+          li
+            a(href='#') SPORTS
+          li
+            a(href='#') EVENTS
+          li
+            a(href='#') GALLERY
+          li
+            a(href='#') ABOUT US
+          li
+            a(href='#') CONTACT US
+  .container-fluid
+    .image-holder
+      img.image-overlay(src='/images/screenshot_sportagg_main.png')
+    p Welcome to Sportagg
+    

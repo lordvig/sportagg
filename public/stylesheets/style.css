@@ -1,0 +1,24 @@
+body {
+  padding: 0px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: black;
+  color: white;
+}
+
+/* navbar links */
+div.custom > ul.navbar-nav > li > a {
+  color:rgb(38, 148, 255);
+}
+div.custom > ul.navbar-nav > li > a:hover {
+  color:rgb(38, 148, 255);
+}
+div.custom > ul.navbar-nav > li.active > a {
+  color:rgb(38, 148, 255);
+}
+div.custom > ul.navbar-nav > li.active > a:hover {
+  color:rgb(38, 148, 255);
+}
+
+.logo{
+  font-weight: bolder;
+}
