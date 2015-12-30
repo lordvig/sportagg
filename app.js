@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport')
+var session = require('express-session')
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -24,6 +25,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components',  express.static( path.join(__dirname, '/bower_components')));
+
+app.use(session({
+  secret: 'jcakbj',
+  cookie: {maxAge: 60000},
+  resave: false,
+  saveUninitialized: false
+}));
 
 app.use(passport.initialize());
 app.use(passport.session());

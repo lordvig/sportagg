@@ -21,9 +21,7 @@ block content
           li
             a(href='#') CONTACT US
   .container-fluid
-    div(ng-controller="MessageController")
-      {{messages.secured || messages.unsecured}}
-      =info
+    =JSON.stringify(user)
     .image-holder
       img.image-overlay(src='/images/screenshot_sportagg_main.png')
     

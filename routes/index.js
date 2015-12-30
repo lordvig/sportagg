@@ -3,10 +3,18 @@ var router = express.Router();
 var auth = require('./auth')
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Express' });
+  if(req.user){
+    return res.render('index', { user: req.user || {} });
+  }
+  res.render('index', { info: 'Express' });
 });
-router.get('/api/messages/secured',auth.isAuth,function(req,res){
-  res.json({message:"Yo welcome to the secret area",error:false});
+router.get('/api/messages/secured',function(req,res){
+  if(req.user)
+    res.json({message:"Yo welcome to the secret area",error:false});
+  else {
+    res.status(300);
+    res.end('forbidden');
+  }
 })
 router.get('/api/messages',function(req,res){
   res.json({message:"Please wait in line",error:false});
