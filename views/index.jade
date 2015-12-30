@@ -21,7 +21,17 @@ block content
           li
             a(href='#') CONTACT US
   .container-fluid
-    =JSON.stringify(user)
+    div(style="float: right;")
+      a(href='/auth')
+        button(class="btn btn-primary") Login
+      a(href='/auth/logout')
+        button(class="btn btn-primary") Logout
+    if user
+      h1.
+        Welcome, #{user.username}
+    else
+      h1.
+        Login using the button
     .image-holder
       img.image-overlay(src='/images/screenshot_sportagg_main.png')
     

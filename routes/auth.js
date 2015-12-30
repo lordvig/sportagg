@@ -27,6 +27,14 @@ router.post('/',passport.authenticate('local',{
 router.get('/',function(req,res,next){
   res.render('login');
 })
+router.get('/logout',function(req,res,next){
+  if(req.user){
+    req.logout();
+    res.redirect('/auth');
+  } else {
+    res.redirect('/');
+  }
+})
 var isAuth = passport.authenticate('local');
 
 module.exports = {
