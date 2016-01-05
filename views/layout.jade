@@ -2,9 +2,10 @@ doctype html
 html(ng-app="SportaggApp")
   head
     title Sportagg
-    script(src='/bower_components/angular/angular.js')
-    script(src='/javascripts/main.js')
+    script(src='bower_components/react/react.js')
+    script(src='bower_components/react/react-dom.js')
     link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.css')
     link(rel='stylesheet', href='/stylesheets/main.min.css')
   body
     block content
+    script(src='/javascripts/bundle.js')
