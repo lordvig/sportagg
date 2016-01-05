@@ -9,7 +9,7 @@ passport.use(new LocalStrategy(
     if(username=='vignesh' && password=='pass')
       return done(null,user);
     else
-      return done(null,false,{message:'Incorrect credentials'})
+      return done(null,false,{message:'Incorrect credentials'});
   }
 ));
 passport.serializeUser(function(user, done) {
@@ -17,27 +17,25 @@ passport.serializeUser(function(user, done) {
 });
 passport.deserializeUser(function(id, done) {
   if(id==1)
-    return done(null,user)
+    return done(null,user);
   return done(true,false);
 });
 router.post('/',passport.authenticate('local',{
   successRedirect: '/',
   failureRedirect: '/auth'
 }));
-router.get('/',function(req,res,next){
+router.get('/',function(req,res){
   res.render('login');
-})
-router.get('/logout',function(req,res,next){
+});
+router.get('/logout',function(req,res){
   if(req.user){
     req.logout();
     res.redirect('/auth');
   } else {
     res.redirect('/');
   }
-})
-var isAuth = passport.authenticate('local');
+});
 
 module.exports = {
-  router: router,
-  isAuth: isAuth
-}
+  router: router
+};

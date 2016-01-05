@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var auth = require('./auth')
 /* GET home page. */
 router.get('/', function(req, res) {
   if(req.user){
@@ -15,8 +14,8 @@ router.get('/api/messages/secured',function(req,res){
     res.status(300);
     res.end('forbidden');
   }
-})
+});
 router.get('/api/messages',function(req,res){
   res.json({message:"Please wait in line",error:false});
-})
+});
 module.exports = router;
