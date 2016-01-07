@@ -9,6 +9,7 @@ class App extends React.Component{
   }
   componentWillMount(){
     auth.onChange = this.updateAuth;
+    auth.login();
   }
   render() {
     return (
@@ -33,7 +34,7 @@ class App extends React.Component{
         <div className="container-fluid">
           <div style={{float: "right"}}>
             <Link to="/login"><button className="btn btn-primary">Login</button></Link>
-            <a href="/auth/logout"><button className="btn btn-primary">Logout</button></a>
+            <Link to="/logout"><button className="btn btn-primary">Logout</button></Link>
           </div>
           {this.props.children}
           <h1>Hello !</h1>
@@ -51,7 +52,7 @@ class App extends React.Component{
     super(props,context);
     this.state = {
       loggedIn: false,
-      user: {name:'vignesh'}
+      user: props.user || {name:'vignesh'}
     };
     this.updateAuth = this.updateAuth.bind(this);
   }
