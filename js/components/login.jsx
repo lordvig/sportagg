@@ -1,57 +1,39 @@
-import auth from './auth';
 import React from 'react';
-import {History} from 'react-router'
+import {History} from 'react-router';
 
 const Login = React.createClass({
-  mixins: [ History ],
-
-  getInitialState() {
-    return {
-      error: false
-    }
-  },
-
-  handleSubmit(event) {
-    event.preventDefault()
-    const username = this.refs.username.value
-    const pass = this.refs.pass.value
-    auth.login(username, pass, (loggedIn) => {
-      if (!loggedIn)
-        return this.setState({ error: true })
-      const { location } = this.props
-      if (location.state && location.state.nextPathname) {
-        this.history.replaceState(null, location.state.nextPathname)
-      } else {
-        this.history.replaceState(null, '/')
-      }
-    })
-  },
-
   render(){
-    return(<div className="container-fluid form-mid">
-      <form onSubmit={this.handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="username">Username:</label>
-          <input type="text" ref="username" name="username" className="form-control"/>
-          <label htmlFor="password">Password:</label>
-          <input type="password" ref="pass" name="password" className="form-control"/>
-          <button type="submit" className="btn btn-primary">Submit</button>
-          {this.state.error && (
-            <p>Bad login information</p>
-          )}
-        </div>
-      </form>
-    </div>);
+    return(
+      <div className="container-fluid form-mid">
+        <form action="/auth" method="POST">
+          <div className="form-group">
+            <label htmlFor="username">Username:</label>
+            <input type="text" name="username" className="form-control"/>
+            <label htmlFor="password">Password:</label>
+            <input type="password" name="password" className="form-control"/>
+            <button type="submit" className="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    );
   }
-})
+});
 const Logout = React.createClass({
+  mixins: [ History ],
   componentDidMount() {
-    auth.logout()
+    var history = this.history;
+    $.get('/auth/logout',function(){
+
+    }).done(function(){
+      console.log("logging out");
+      if(window.settings.user) window.settings.user=undefined;
+      history.replaceState(null, '/');
+    });
   },
 
   render() {
-    return <p>You are now logged out</p>
+    return (<h1>Logging out</h1>);
   }
-})
+});
 
 export {Login, Logout};
