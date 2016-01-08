@@ -1,10 +1,14 @@
-extends layout
-
-block content
-  
-  
-  div#react-container
-  div#test
-  script(src='/javascripts/bundle.js')
-  script
-    | render()
+doctype html
+html
+  head
+    title Sportagg
+    script(src='bower_components/jquery/dist/jquery.min.js')
+    link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.css')
+    link(rel='stylesheet', href='/stylesheets/main.min.css')
+    script
+      | window.settings = 
+      !=  JSON.stringify({user : user})
+  body
+    div#react-container
+    div#test
+    script(src='/javascripts/bundle.js')

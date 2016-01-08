@@ -4,20 +4,18 @@ import { browserHistory, Router, Route ,IndexRoute} from 'react-router';
 import ReactDOM from 'react-dom';
 import React from 'react';
 
+var wrapComponent = function(Component, props) {
+  return React.createClass({
+    render: function() {
+      return React.createElement(Component, props);
+    }
+  });
+};
+
 ReactDOM.render(
   <Router history={browserHistory}>
     <Route path='/' component={App}>
-      <IndexRoute component={LoginPrompt}/>
-      <Route path="login" component={Login} />
-      <Route path="logout" component={Logout} />
     </Route>
   </Router>,
   document.getElementById('react-container')
 );
-// export function render(){
-//   ReactDOM.render(
-//     <App/>
-//     ,document.getElementById('react-container')
-//   );
-// }
-// render();

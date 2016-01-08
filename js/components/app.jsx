@@ -8,6 +8,7 @@ class App extends React.Component{
     this.setState({loggedIn: loggedIn});
   }
   componentWillMount(){
+    this.user=window.settings.user
     auth.onChange = this.updateAuth;
     auth.login();
   }
@@ -33,12 +34,12 @@ class App extends React.Component{
         </nav>
         <div className="container-fluid">
           <div style={{float: "right"}}>
-            <Link to="/login"><button className="btn btn-primary">Login</button></Link>
-            <Link to="/logout"><button className="btn btn-primary">Logout</button></Link>
+            <a href="/auth/"><button className="btn btn-primary">Login</button></a>
+            <a href="/auth/logout"><button className="btn btn-primary">Logout</button></a>
           </div>
           {this.props.children}
           <h1>Hello !</h1>
-          {this.state.loggedIn? (<h1>Hello {this.state.user.name}</h1>)
+          {this.user ? (<h1>Hello {this.user.username}</h1>)
             : (<h1>Login using the button</h1>)}
           <div className="image-holder">
             <img src="/images/screenshot_sportagg_main.png" className="image-overlay"></img>

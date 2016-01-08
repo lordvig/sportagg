@@ -37,6 +37,7 @@ var App = (function (_React$Component) {
   }, {
     key: 'componentWillMount',
     value: function componentWillMount() {
+      this.user = window.settings.user;
       _auth2.default.onChange = this.updateAuth;
       _auth2.default.login();
     }
@@ -128,8 +129,8 @@ var App = (function (_React$Component) {
             'div',
             { style: { float: "right" } },
             _react2.default.createElement(
-              _reactRouter.Link,
-              { to: '/login' },
+              'a',
+              { href: '/auth/' },
               _react2.default.createElement(
                 'button',
                 { className: 'btn btn-primary' },
@@ -137,8 +138,8 @@ var App = (function (_React$Component) {
               )
             ),
             _react2.default.createElement(
-              _reactRouter.Link,
-              { to: '/logout' },
+              'a',
+              { href: '/auth/logout' },
               _react2.default.createElement(
                 'button',
                 { className: 'btn btn-primary' },
@@ -152,11 +153,11 @@ var App = (function (_React$Component) {
             null,
             'Hello !'
           ),
-          this.state.loggedIn ? _react2.default.createElement(
+          this.user ? _react2.default.createElement(
             'h1',
             null,
             'Hello ',
-            this.state.user.name
+            this.user.username
           ) : _react2.default.createElement(
             'h1',
             null,
@@ -386,24 +387,19 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var wrapComponent = function wrapComponent(Component, props) {
+  return _react2.default.createClass({
+    render: function render() {
+      return _react2.default.createElement(Component, props);
+    }
+  });
+};
+
 _reactDom2.default.render(_react2.default.createElement(
   _reactRouter.Router,
   { history: _reactRouter.browserHistory },
-  _react2.default.createElement(
-    _reactRouter.Route,
-    { path: '/', component: _app.App },
-    _react2.default.createElement(_reactRouter.IndexRoute, { component: _app.LoginPrompt }),
-    _react2.default.createElement(_reactRouter.Route, { path: 'login', component: _login.Login }),
-    _react2.default.createElement(_reactRouter.Route, { path: 'logout', component: _login.Logout })
-  )
+  _react2.default.createElement(_reactRouter.Route, { path: '/', component: _app.App })
 ), document.getElementById('react-container'));
-// export function render(){
-//   ReactDOM.render(
-//     <App/>
-//     ,document.getElementById('react-container')
-//   );
-// }
-// render();
 
 },{"./components/app.jsx":1,"./components/login.jsx":3,"react":209,"react-dom":29,"react-router":49}],5:[function(require,module,exports){
 /**
