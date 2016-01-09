@@ -13,7 +13,7 @@ passport.use(new LocalStrategy(
         console.log(err);
         return done(null,false,{err:err,message:'DB error'});
       }
-      client.query('select id,user from users where username=\''+username+'\' and password=\''+password+'\';',function(err,result){
+      client.query('select id,username from users where username=\''+username+'\' and password=\''+password+'\';',function(err,result){
         db_done();
         console.log(result.rows);
         if(err){
@@ -61,12 +61,31 @@ router.get('/',function(req,res){
 router.get('/logout',function(req,res){
   if(req.user){
     req.logout();
-    res.redirect('/auth');
+    res.redirect('/');
   } else {
     res.redirect('/');
   }
 });
-
+router.post('/register',function(req,res,next){
+  var user=req.body.username,pass=req.body.password;
+  pg.connect(db_url,function(err,client,db_done){
+    if(err){
+      console.log(err);
+    }
+    client.query('insert into users(username,password) values(\''+user+'\',\''+pass+'\');',function(err,result){
+      db_done();
+      if(err){
+        console.error('db register error',err);
+        next(err);
+      } else {
+        res.json(result);
+      }
+    });
+  });
+});
+router.get('/register',function(req,res){
+  res.render('register');
+});
 module.exports = {
   router: router
 };
