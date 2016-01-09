@@ -6,8 +6,8 @@ html
     link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.css')
     link(rel='stylesheet', href='/stylesheets/main.min.css')
     script
-      | window.settings = 
-      !=  JSON.stringify({user : user})
+      | window.info = 
+      !=  JSON.stringify({user : user,message: message || undefined})
   body
     div#react-container
     div#test

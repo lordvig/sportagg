@@ -53,14 +53,15 @@ passport.deserializeUser(function(id, done) {
 });
 router.post('/',passport.authenticate('local',{
   successRedirect: '/',
-  failureRedirect: '/auth'
+  failureRedirect: '/#/login'
 }));
 router.get('/',function(req,res){
-  res.render('login');
+  res.redirect('/#/login');
 });
 router.get('/logout',function(req,res){
   if(req.user){
     req.logout();
+    req.session.message="You have been logged out";
     res.redirect('/');
   } else {
     res.redirect('/');
@@ -70,21 +71,24 @@ router.post('/register',function(req,res,next){
   var user=req.body.username,pass=req.body.password;
   pg.connect(db_url,function(err,client,db_done){
     if(err){
-      console.log(err);
+      console.error('db err',err);
     }
     client.query('insert into users(username,password) values(\''+user+'\',\''+pass+'\');',function(err,result){
       db_done();
       if(err){
         console.error('db register error',err);
-        next(err);
+        req.session.message="Could not register";
+        res.redirect('/');
       } else {
-        res.json(result);
+        console.log('register result',result);
+        req.session.message="You have been registered";
+        res.redirect('/');
       }
     });
   });
 });
 router.get('/register',function(req,res){
-  res.render('register');
+  res.redirect('/#/register');
 });
 module.exports = {
   router: router

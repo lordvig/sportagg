@@ -25,6 +25,7 @@ class App extends React.Component{
         <div className="container-fluid">
           <div style={{float: "right"}}>
             <Link to="login"><button className="btn btn-primary">Login</button></Link>
+            <Link to="register"><button className="btn btn-primary">Register</button></Link>
             <Link to="logout"><button className="btn btn-primary">Logout</button></Link>
           </div>
           {this.props.children}
@@ -48,7 +49,8 @@ class MainContent extends React.Component{
     return(
       <div className="main-content">
         <h1>Hello !</h1>
-        {window.settings.user ? (<h1>Hello {window.settings.user.username}</h1>)
+        {(window.info.message)?(<h1>{window.info.message}</h1>):(<h1></h1>)}
+        {window.info.user ? (<h1>Hello {window.info.user.username}</h1>)
           : (<h1>Login using the button</h1>)}
       </div>
     );

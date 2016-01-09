@@ -123,6 +123,15 @@ var App = (function (_React$Component) {
             ),
             _react2.default.createElement(
               _reactRouter.Link,
+              { to: 'register' },
+              _react2.default.createElement(
+                'button',
+                { className: 'btn btn-primary' },
+                'Register'
+              )
+            ),
+            _react2.default.createElement(
+              _reactRouter.Link,
               { to: 'logout' },
               _react2.default.createElement(
                 'button',
@@ -175,11 +184,16 @@ var MainContent = (function (_React$Component2) {
           null,
           'Hello !'
         ),
-        window.settings.user ? _react2.default.createElement(
+        window.info.message ? _react2.default.createElement(
+          'h1',
+          null,
+          window.info.message
+        ) : _react2.default.createElement('h1', null),
+        window.info.user ? _react2.default.createElement(
           'h1',
           null,
           'Hello ',
-          window.settings.user.username
+          window.info.user.username
         ) : _react2.default.createElement(
           'h1',
           null,
@@ -201,7 +215,7 @@ exports.MainContent = MainContent;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Logout = exports.Login = undefined;
+exports.Register = exports.Logout = exports.Login = undefined;
 
 var _react = require('react');
 
@@ -265,9 +279,43 @@ var Logout = _react2.default.createClass({
     );
   }
 });
-
+var Register = _react2.default.createClass({
+  displayName: 'Register',
+  render: function render() {
+    return _react2.default.createElement(
+      'div',
+      { className: 'container-fluid form-mid' },
+      _react2.default.createElement(
+        'form',
+        { action: '/auth/register', method: 'POST' },
+        _react2.default.createElement(
+          'div',
+          { className: 'form-group' },
+          _react2.default.createElement(
+            'label',
+            { htmlFor: 'username' },
+            'Username:'
+          ),
+          _react2.default.createElement('input', { type: 'text', name: 'username', className: 'form-control' }),
+          _react2.default.createElement(
+            'label',
+            { htmlFor: 'password' },
+            'Password:'
+          ),
+          _react2.default.createElement('input', { type: 'password', name: 'password', className: 'form-control' }),
+          _react2.default.createElement(
+            'button',
+            { type: 'submit', className: 'btn btn-primary' },
+            'Submit'
+          )
+        )
+      )
+    );
+  }
+});
 exports.Login = Login;
 exports.Logout = Logout;
+exports.Register = Register;
 
 },{"react":206,"react-router":73}],3:[function(require,module,exports){
 'use strict';
@@ -297,7 +345,8 @@ _reactDom2.default.render(_react2.default.createElement(
     _react2.default.createElement(_reactRouter.Route, { path: '/logout', component: _login.Logout }),
     _react2.default.createElement(_reactRouter.IndexRoute, { component: _app.MainContent })
   ),
-  _react2.default.createElement(_reactRouter.Route, { path: '/login', component: _login.Login })
+  _react2.default.createElement(_reactRouter.Route, { path: '/login', component: _login.Login }),
+  _react2.default.createElement(_reactRouter.Route, { path: '/register', component: _login.Register })
 ), document.getElementById('react-container'));
 
 },{"./components/app.jsx":1,"./components/login.jsx":2,"react":206,"react-dom":53,"react-router":73}],4:[function(require,module,exports){

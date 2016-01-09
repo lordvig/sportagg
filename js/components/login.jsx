@@ -35,5 +35,21 @@ const Logout = React.createClass({
     return (<h1>Logging out</h1>);
   }
 });
-
-export {Login, Logout};
+const Register = React.createClass({
+  render(){
+    return(
+      <div className="container-fluid form-mid">
+        <form action="/auth/register" method="POST">
+          <div className="form-group">
+            <label htmlFor="username">Username:</label>
+            <input type="text" name="username" className="form-control"/>
+            <label htmlFor="password">Password:</label>
+            <input type="password" name="password" className="form-control"/>
+            <button type="submit" className="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    );
+  }
+});
+export {Login, Logout, Register};
