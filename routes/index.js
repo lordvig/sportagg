@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res) {
-  console.log('message',req.session.message);
   var message=req.session.message;
   req.session.message=undefined;
   if(req.user){
@@ -10,7 +9,6 @@ router.get('/', function(req, res) {
   } else {
     res.render('index', { message: message});
   }
-  console.log('message',req.session.message);
 });
 router.get('/api/messages/secured',function(req,res){
   if(req.user)

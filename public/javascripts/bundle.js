@@ -68,11 +68,33 @@ var App = (function (_React$Component) {
                 ),
                 _react2.default.createElement(
                   'li',
-                  null,
+                  { className: 'dropdown' },
                   _react2.default.createElement(
                     'a',
-                    { href: '#' },
+                    { href: '#', className: 'dropdown-toggle', 'data-toggle': 'dropdown' },
                     'EVENTS'
+                  ),
+                  _react2.default.createElement(
+                    'ul',
+                    { className: 'dropdown-menu' },
+                    _react2.default.createElement(
+                      'li',
+                      null,
+                      _react2.default.createElement(
+                        'a',
+                        { href: '#' },
+                        'CRICKET'
+                      )
+                    ),
+                    _react2.default.createElement(
+                      'li',
+                      null,
+                      _react2.default.createElement(
+                        'a',
+                        { href: '#' },
+                        'FOOTBALL'
+                      )
+                    )
                   )
                 ),
                 _react2.default.createElement(

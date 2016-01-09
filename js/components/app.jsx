@@ -13,8 +13,13 @@ class App extends React.Component{
             <div className="collapse navbar-collapse custom">
               <ul className="nav navbar-nav navbar-right">
                 <li className="active"><a href="#">HOME</a></li>
-
-                <li><a href="#">EVENTS</a></li>
+                <li className="dropdown">
+                  <a href="#" className="dropdown-toggle" data-toggle="dropdown">EVENTS</a>
+                  <ul className="dropdown-menu">
+                    <li><a href="#">CRICKET</a></li>
+                    <li><a href="#">FOOTBALL</a></li>
+                  </ul>
+                </li>
                 <li><a href="#">GALLERY</a></li>
                 <li><a href="#">ABOUT US</a></li>
                 <li><a href="#">CONTACT US</a></li>

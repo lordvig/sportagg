@@ -67,7 +67,7 @@ router.get('/logout',function(req,res){
     res.redirect('/');
   }
 });
-router.post('/register',function(req,res,next){
+router.post('/register',function(req,res){
   var user=req.body.username,pass=req.body.password;
   pg.connect(db_url,function(err,client,db_done){
     if(err){
