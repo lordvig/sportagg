@@ -59,7 +59,7 @@ var App = (function (_React$Component) {
                 { className: 'nav navbar-nav navbar-right' },
                 _react2.default.createElement(
                   'li',
-                  { className: 'active' },
+                  null,
                   _react2.default.createElement(
                     'a',
                     { href: '#' },

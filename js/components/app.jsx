@@ -12,7 +12,7 @@ class App extends React.Component{
             </div>
             <div className="collapse navbar-collapse custom">
               <ul className="nav navbar-nav navbar-right">
-                <li className="active"><a href="#">HOME</a></li>
+                <li><a href="#">HOME</a></li>
                 <li className="dropdown">
                   <a href="#" className="dropdown-toggle" data-toggle="dropdown">EVENTS</a>
                   <ul className="dropdown-menu">
