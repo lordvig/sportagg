@@ -1,6 +1,6 @@
 {
     "extends": "eslint:recommended",
-		"parser": "babel-eslint",
+	"parser": "babel-eslint",
     "rules": {
       "indent" : [1, 2],
       "semi" : 1,

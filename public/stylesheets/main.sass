@@ -1,36 +1,31 @@
-body
-  padding: 0px
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
-  background-color: black
-  color: white
+/* navbar */
 
-
-/* navbar links */
-$mblue : rgb(38, 148, 255)
-
+/* change menu text to white*/
 div.custom
   ul.navbar-nav
     li,li.active,li.focus
       a,a:hover
-        color: $mblue
-
-.dropdown-menu > li > a
-  background-color: black
-  border-width: medium
-  border-color: #dddddd
+        color: white
+/* make navbar bigger and blacker ;) */
+.navbar-inverse
+    background-color: black
+    padding: 15px 0px 15px 0px
+/* login button style */
+a.login-nav
+    div
+        padding: 0px 20px 0px 20px
+        border-style: solid
+        border-width: 1px
+        border-color: blue
+        border-radius: 25px
+// .dropdown-menu > li > a
+//   background-color: black
+//   border-width: medium
+//   border-color: #dddddd
 
 /* title */
-.mblue
-  color: $mblue
 .logo
-  font-weight: bolder
-
-/* centre image */
-img.image-overlay
-  position: relative
-
-/* form */
-.form-mid
-  width: 500px
-  align-self: center
-  padding-top: 100px
+    padding-top: 5px
+    padding-bottom: 5px
+    img
+        max-height: 100%
