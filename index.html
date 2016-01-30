@@ -1,39 +1,16 @@
-<html>
-
-  <head>
-    <title>Sportagg</title>
-    <link rel="stylesheet" href="public/stylesheets/dist/css/bootstrap.css"/>
-    <link rel="stylesheet" href="public/stylesheets/main.min.css"/>
-
-    <!-- 1. Load libraries -->
-    <!-- IE required polyfills, in this exact order -->
-    <script src="node_modules/es6-shim/es6-shim.min.js"></script>
-    <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
-
-    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
-    <script src="node_modules/systemjs/dist/system.src.js"></script>
-    <script src="node_modules/rxjs/bundles/Rx.js"></script>
-    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
-
-    <!-- 2. Configure SystemJS -->
-    <script>
-      System.config({
-        packages: {
-          app: {
-            format: 'register',
-            defaultExtension: 'js'
-          }
-        }
-      });
-      System.import('app/boot')
-            .then(null, console.error.bind(console));
-    </script>
-
-  </head>
-
-  <!-- 3. Display the application -->
-  <body>
-    <my-app>Loading...</my-app>
-  </body>
-
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>My HTML File</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="public/stylesheets/main.min.css">
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="app/components/index/index.controller.js"></script>
+</head>
+<body ng-app="sportagg">
+    <div ng-controller="AppController">
+      <div app-index></div>
+    </div>
+</body>
 </html>
