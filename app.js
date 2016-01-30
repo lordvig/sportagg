@@ -4,12 +4,15 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var passport = require('passport');
-var session = require('express-session');
+// var passport = require('passport');
+// var session = require('express-session');
+var mongoose = require('mongoose');
+var jwt = require('jsonwebtoken');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
-var auth = require('./routes/auth').router;
+var index = require('./server/index');
+var users = require('./server/users');
+var auth = require('./server/auth');
+var config = require('./server/config');
 
 var app = express();
 
@@ -17,6 +20,7 @@ var app = express();
 // app.set('views', path.join(__dirname, 'views'));
 // app.set('view engine', 'jade');
 
+mongoose.connect(config.mongo_url);
 app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -25,19 +29,36 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '')));
 app.use('/bower_components',  express.static( path.join(__dirname, '/bower_components')));
 
-app.use(session({
-  secret: 'jcakbj',
-  cookie: {maxAge: 60000},
-  resave: false,
-  saveUninitialized: false
-}));
+// app.use(session({
+//   secret: 'jcakbj',
+//   cookie: {maxAge: 60000},
+//   resave: false,
+//   saveUninitialized: false
+// }));
 
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
-app.use('/', routes);
-app.use('/users', users);
-app.use('/auth', auth);
+app.use(function(req,res,next){
+  var token = req.body.token || req.query.token || req.headers['x-access-token'];
+  if(token){
+    jwt.verify(token, config.secret, function(err, decoded){
+      if(err){
+        return res.json({success: false, error: 'Invalid token'});
+      } else {
+        console.log(decoded);
+        req.user = decoded;
+        next();
+      }
+    });
+  } else {
+    next();
+  }
+});
+
+app.use('/api', index);
+app.use('/api/users', users);
+app.use('/api/auth', auth);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -10,7 +10,7 @@ var router = express.Router();
 //     res.render('index', { message: message});
 //   }
 // });
-router.get('/api/messages/secured',function(req,res){
+router.get('messages/secured',function(req,res){
   if(req.user)
     res.json({message:"Yo welcome to the secret area",error:false});
   else {
@@ -18,7 +18,7 @@ router.get('/api/messages/secured',function(req,res){
     res.end('forbidden');
   }
 });
-router.get('/api/messages',function(req,res){
+router.get('messages',function(req,res){
   res.json({message:"Please wait in line",error:false});
 });
 module.exports = router;

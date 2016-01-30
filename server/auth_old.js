@@ -4,7 +4,7 @@ var express = require('express');
 var router = express.Router();
 var pg = require('pg');
 
-var db_url = 'postgres://ueyntqoaryqfki:IETq0kF0W4pF5xuRge89Uos3Yn@ec2-54-83-52-71.compute-1.amazonaws.com:5432/d9c0dlkf08iie6?ssl=true';
+var db_url = require('./config').db_url
 passport.use(new LocalStrategy(
   function(username, password, done) {
     pg.connect(db_url,function(err,client,db_done){
