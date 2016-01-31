@@ -66,8 +66,9 @@ sportaggApp.controller('AppController', ['$scope','AuthService', function($scope
 sportaggApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
-      when('/grounds', {
-        templateUrl: 'app/components/grounds/ground.component.html'
+      when('/sports/:sportName', {
+        templateUrl: 'app/components/sports/sport.component.html',
+        controller: 'SportController'
       }).
       when('/',{
         templateUrl: 'app/components/index/app.component.html'
