@@ -1,3 +1,32 @@
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Login</h4>
+      </div>
+      <div class="modal-body">
+        <div ng-if="login_message" class="alert alert-danger">
+          {{login_message}}
+        </div>
+        <form class="form" id="formLogin">
+          <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="username" ng-model="creds.username" class="form-control" id="username">
+          </div>
+          <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" ng-model="creds.password" class="form-control" id="pwd">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" ng-click="login();" id="btnLogin" class="btn btn-primary">Login</button>
+      </div>
+    </div>
+  </div>
+</div>
 <nav class="navbar navbar-default navbar-static-top navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -10,10 +39,11 @@
         <li><a href="#/">EVENTS</a></li>
         <li><a href="#/">CONTACT US</a></li>
         <li ng-if="!loggedIn">
-          <a class="dropdown-toggle login-nav" href="#/" data-toggle="dropdown" id="navLogin">
+          <a class="dropdown-toggle login-nav" href="#/" data-toggle="modal" data-target="#login-modal">
             <div>LOG IN/SIGN UP</div>
           </a>
-          <div class="dropdown-menu" style="padding:17px;">
+
+          <!-- <div class="dropdown-menu" style="padding:17px;">
             <form class="form" id="formLogin">
               <div class="form-group">
                 <label for="username">Username:</label>
@@ -25,7 +55,7 @@
               </div>
               <button type="button" ng-click="login()" id="btnLogin" class="btn btn-primary">Login</button>
             </form>
-          </div>
+          </div> -->
         </li>
         <li ng-if="loggedIn">
           <a class="dropdown-toggle login-nav" href="#/" data-toggle="dropdown" id="navLogin">

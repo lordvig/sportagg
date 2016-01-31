@@ -7,26 +7,32 @@ sportaggApp.controller('AppController', ['$scope','AuthService', function($scope
   };
   $scope.test = "TEST";
   $scope.loggedIn = false;
+  $scope.login_message=null;
   $scope.dbg = function(){
     console.log($scope.creds);
     console.log($scope.info);
     console.log($scope.loggedIn);
   }
-  $scope.dbg();
+  // $scope.dbg();
   $scope.login = function(){
     AuthService.login($scope.creds).then(function(info){
       if(info) {
-        $scope.info=info;
+        $scope.info=info.data;
         $scope.loggedIn=true;
+        $('#login-modal').modal('hide');
+        $scope.login_message=null;
+      } else {
+        $scope.login_message="Invalid login credentials";
+        // console.log('cant login')
       }
-      $scope.dbg();
+      // $scope.dbg();
     });
   };
   $scope.logout = function(){
     AuthService.logout($scope.creds);
     $scope.info=null;
     $scope.loggedIn=false;
-    $scope.dbg();
+    // $scope.dbg();
   };
 }])
 .directive('appIndex', function() {

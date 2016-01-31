@@ -3,6 +3,7 @@ angular.module('sportagg').factory('AuthService',['$http',function($http){
   auth.info = {};
   auth.login = function(creds){
     return $http.post('/api/auth/authenticate',creds).then(function(data){
+      // console.log(data);
       if(data.data.success){
         auth.loggedIn = true;
         sessionStorage.setItem('jwt',data.data.token);
@@ -12,6 +13,10 @@ angular.module('sportagg').factory('AuthService',['$http',function($http){
         sessionStorage.removeItem('jwt');
         return null;
       }
+    },function(data){
+      auth.loggedIn = false;
+      sessionStorage.removeItem('jwt');
+      return null;
     });
   };
   auth.getInfo = function(creds){
