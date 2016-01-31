@@ -17,9 +17,13 @@
     <script src="app/components/sports/sport.controller.js"></script>
 </head>
 <body ng-app="sportagg">
-  <div ng-controller="AppController">
-    <ng-include src="'app/components/shared/navbar.component.html'"></ng-include>
-    <div ng-view></div>
+  <div class="container-fluid">
+    <div ng-controller="AppController">
+      <div class="row">
+        <div class="col-md-12" ng-include="'app/components/shared/navbar.component.html'"></div>
+      </div>
+      <div ng-view></div>
+    </div>
   </div>
 </body>
 </html>
