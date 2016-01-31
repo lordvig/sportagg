@@ -30,6 +30,24 @@ angular.module('sportagg').factory('AuthService',['$http',function($http){
       }
     });
   };
+  auth.signup = function(creds){
+    return $http.post('/api/auth/register',creds).then(function(data){
+      // console.log(data);
+      if(data.data.success){
+        auth.loggedIn = true;
+        sessionStorage.setItem('jwt',data.data.token);
+        return auth.getInfo();
+      } else {
+        auth.loggedIn = false;
+        sessionStorage.removeItem('jwt');
+        return null;
+      }
+    },function(data){
+      auth.loggedIn = false;
+      sessionStorage.removeItem('jwt');
+      return null;
+    });
+  }
   auth.logout = function(){
     auth.loggedIn = false;
     sessionStorage.removeItem('jwt');

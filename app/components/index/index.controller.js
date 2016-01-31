@@ -28,6 +28,28 @@ sportaggApp.controller('AppController', ['$scope','AuthService', function($scope
       // $scope.dbg();
     });
   };
+  $scope.signup = function(){
+    AuthService.signup($scope.creds).then(function(info){
+      if(info) {
+        $scope.info=info.data;
+        $scope.loggedIn=true;
+        $('#signup-modal').modal('hide');
+        $scope.login_message=null;
+      } else {
+        $scope.login_message="Invalid signin credentials";
+        // console.log('cant login')
+      }
+      // $scope.dbg();
+    });
+  };
+  $scope.switchSignUp = function(){
+    $('#login-modal').modal('hide');
+    $('#signup-modal').modal('show');
+  };
+  $scope.switchLogin = function(){
+    $('#signup-modal').modal('hide');
+    $('#login-modal').modal('show');
+  };
   $scope.logout = function(){
     AuthService.logout($scope.creds);
     $scope.info=null;
