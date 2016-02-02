@@ -1,17 +1,24 @@
 <div class="sport-container">
-  {{sportName}}
+  <br/>
   <div class="row row-eq-height">
     <div class="col-md-3 sport-sidenav">
-      SPORTS>{{sportName}} <br/>
-      GROUNDS <br/>
-      ACADEMIES <br/>
-      TOURNAMENTS <br/>
+      <ul class="sidenav">
+        <li class="current"> SPORTS > <span class="mblue">{{sportName.toUpperCase()}}</span> </li>
+        <li> <span class="current">GROUNDS</span> </li>
+        <li> ACADEMIES </li>
+        <li> TOURNAMENTS </li>
+      </ul>
     </div>
     <div class="col-md-9 sport-main">
       <div class="ground-card">
         <div class="ground-card-top">
-          1.ABCD Grounds<br/>
-          Nungambakkam
+          <div class="ground-top-text">
+            <h4>1.ABCD Grounds</h3>
+            <h5>Nungambakkam</h4>
+          </div>
+          <div class="ground-image">
+            <img src="public/images/football2.jpg"/>
+          </div>
         </div>
         <div class="ground-card-bot">
           <button>Details </button>
