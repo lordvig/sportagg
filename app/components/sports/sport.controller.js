@@ -12,7 +12,7 @@ angular.module('sportagg')
 .factory('SportService',['$http',function($http){
   var sportService = {};
   sportService.getGrounds = function(sportName){
-    return $http.get('/api/sports/grounds/'+sportName).then(function(res){
+    return $http.get(util.authURL('/api/sports/grounds/'+sportName)).then(function(res){
       if(res.data.success){
         return res.data.data;
       } else {

@@ -15,6 +15,7 @@ sportaggApp.controller('AppController', ['$scope','AuthService', function($scope
   // };
   // $scope.dbg();
   $scope.login = function(){
+    // $scope.dbg();
     AuthService.login($scope.creds).then(function(info){
       if(info) {
         $scope.info=info.data;
@@ -77,3 +78,9 @@ sportaggApp.config(['$routeProvider',
         redirectTo:'/'
       });
   }]);
+
+var util = {};
+
+util.authURL = function(url){
+  return url + "?token=" + sessionStorage.getItem('jwt');
+};
