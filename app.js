@@ -13,6 +13,7 @@ var index = require('./server/index');
 var users = require('./server/users');
 var auth = require('./server/auth');
 var config = require('./server/config');
+var sports = require('./server/sports');
 
 var app = express();
 
@@ -59,6 +60,7 @@ app.use(function(req,res,next){
 app.use('/api', index);
 app.use('/api/users', users);
 app.use('/api/auth', auth);
+app.use('/api/sports', sports)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

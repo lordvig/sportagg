@@ -1,6 +1,15 @@
-<div>
-  <ul>
-    <li> Ground 1 </li>
-    <li> Ground 2 </li>
-  </ul>
+<div ng-repeat="ground in grounds" class="ground-card">
+  <div class="ground-card-top">
+    <div class="ground-top-text">
+      <h4>{{ground.name}}</h3>
+      <h5>{{ground.location}}</h4>
+    </div>
+    <div class="ground-image">
+      <img src="public/images/football2.jpg"/>
+    </div>
+  </div>
+  <div class="ground-card-bot">
+    <button>Details </button>
+    <button>Book now </button>
+  </div>
 </div>
