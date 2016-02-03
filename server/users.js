@@ -10,18 +10,19 @@ router.get('/', function(req, res, next) {
   });
 });
 
-router.get('/me', function(req,res,next){
+router.get('/me', function(req,res){
+  //TODO  change to success,data format
   if(req.user){
     res.json(req.user);
   } else {
-    res.json({error:"login first"})
+    res.json({error:"login first"});
   }
-})
+});
 
 router.post('/create',function(req, res, next){
   User.create(req.body,function(err,user){
     if(err) return next(err);
     res.json(user);
   });
-})
+});
 module.exports = router;

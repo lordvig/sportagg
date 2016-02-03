@@ -8,11 +8,11 @@ sportaggApp.controller('AppController', ['$scope','AuthService', function($scope
   $scope.test = "TEST";
   $scope.loggedIn = false;
   $scope.login_message=null;
-  $scope.dbg = function(){
-    console.log($scope.creds);
-    console.log($scope.info);
-    console.log($scope.loggedIn);
-  }
+  // $scope.dbg = function(){
+  //   console.log($scope.creds);
+  //   console.log($scope.info);
+  //   console.log($scope.loggedIn);
+  // };
   // $scope.dbg();
   $scope.login = function(){
     AuthService.login($scope.creds).then(function(info){

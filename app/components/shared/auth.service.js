@@ -13,7 +13,7 @@ angular.module('sportagg').factory('AuthService',['$http',function($http){
         sessionStorage.removeItem('jwt');
         return null;
       }
-    },function(data){
+    },function(){
       auth.loggedIn = false;
       sessionStorage.removeItem('jwt');
       return null;
@@ -42,12 +42,12 @@ angular.module('sportagg').factory('AuthService',['$http',function($http){
         sessionStorage.removeItem('jwt');
         return null;
       }
-    },function(data){
+    },function(){
       auth.loggedIn = false;
       sessionStorage.removeItem('jwt');
       return null;
     });
-  }
+  };
   auth.logout = function(){
     auth.loggedIn = false;
     sessionStorage.removeItem('jwt');

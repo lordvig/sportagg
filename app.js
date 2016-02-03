@@ -21,7 +21,7 @@ var app = express();
 // app.set('views', path.join(__dirname, 'views'));
 // app.set('view engine', 'jade');
 
-// mongoose.connect(config.mongo_url);
+mongoose.connect(config.mongo_url);
 app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -47,7 +47,7 @@ app.use(function(req,res,next){
       if(err){
         return res.json({success: false, error: 'Invalid token'});
       } else {
-        console.log(decoded);
+        // console.log(decoded);
         req.user = decoded;
         next();
       }
@@ -60,7 +60,7 @@ app.use(function(req,res,next){
 app.use('/api', index);
 app.use('/api/users', users);
 app.use('/api/auth', auth);
-app.use('/api/sports', sports)
+app.use('/api/sports', sports);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -13,7 +13,11 @@ angular.module('sportagg')
   var sportService = {};
   sportService.getGrounds = function(sportName){
     return $http.get('/api/sports/grounds/'+sportName).then(function(res){
-      return res.data;
+      if(res.data.success){
+        return res.data.data;
+      } else {
+        throw res.data.error;
+      }
     });
   };
   return sportService;

@@ -1,1 +1,5 @@
 public/javascripts/bundle.js
+node_modules/*
+bower_components/*
+public/stylesheets/dist/*
+old/*

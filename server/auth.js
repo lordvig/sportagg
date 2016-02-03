@@ -27,8 +27,8 @@ router.post('/register',function(req,res){
           expiresIn: 24*60*60 // expires in 24 hours
         });
         res.json({success: true,token: token });
-      })
+      });
     }
-  })
-})
+  });
+});
 module.exports = router;
