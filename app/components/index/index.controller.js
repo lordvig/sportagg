@@ -74,6 +74,10 @@ sportaggApp.config(['$routeProvider',
       when('/',{
         templateUrl: 'app/components/index/app.component.html'
       }).
+      when('/admin',{
+        templateUrl: 'app/components/admin/admin.component.html',
+        controller: 'AdminController'
+      }).
       otherwise({
         redirectTo:'/'
       });

@@ -41,7 +41,7 @@
         <div ng-if="login_message" class="alert alert-danger">
           {{login_message}}
         </div>
-        <form class="form" id="formLogin">
+        <form class="form" id="formSingup">
           <div class="form-group">
             <label for="username">Username:</label>
             <input type="username" ng-model="creds.username" class="form-control" id="username">
@@ -68,6 +68,7 @@
     </div>
     <div class="collapse navbar-collapse custom">
       <ul class="nav navbar-nav navbar-right">
+        <li ng-if="info && info.admin"><a href="#/admin">ADMIN</a></li>
         <li><a href="#/">HOME</a></li>
         <li>
           <a class="dropdown-toggle" data-toggle="dropdown">SPORTS</a>
@@ -85,27 +86,14 @@
             <div>LOG IN/SIGN UP</div>
           </a>
 
-          <!-- <div class="dropdown-menu" style="padding:17px;">
-            <form class="form" id="formLogin">
-              <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="username" ng-model="creds.username" class="form-control" id="username">
-              </div>
-              <div class="form-group">
-                <label for="pwd">Password:</label>
-                <input type="password" ng-model="creds.password" class="form-control" id="pwd">
-              </div>
-              <button type="button" ng-click="login()" id="btnLogin" class="btn btn-primary">Login</button>
-            </form>
-          </div> -->
         </li>
         <li ng-if="loggedIn">
-          <a class="dropdown-toggle login-nav" href="#/" data-toggle="dropdown" id="navLogin">
-            <div>{{creds.username}}</div>
+          <a class="dropdown-toggle login-nav" href="#/" data-tmggle="dropdown" id="navLogin">
+            <div>{{info.username}}</div>
           </a>
           <div class="dropdown-menu" style="padding:17px;">
             <div>
-              <button type="button" ng-click="logout()" id="btnLogin" class="btn btn-primary">Logout</button>
+              <button type="button" ng-click="logout()" id="btnLogout" class="btn btn-primary">Logout</button>
             </div>
           </div>
         </li>

@@ -20,6 +20,8 @@ router.get('/me', function(req,res){
 });
 
 router.post('/create',function(req, res, next){
+  //TODO IMPORTANT hash passwords
+  req.body.admin=false;
   User.create(req.body,function(err,user){
     if(err) return next(err);
     res.json(user);

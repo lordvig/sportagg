@@ -11,10 +11,13 @@ router.get('/grounds/:sportName', function(req, res) {
     else res.json({success: true, data: data});
   });
 });
-// router.post('/grounds/create',function(req, res, next){
-//   Ground.create(req.body,function(err,ground){
-//     if(err) return next(err);
-//     res.json(ground);
-//   });
-// });
+router.post('/grounds/create',function(req, res, next){
+  if(!req.user) return res.json({success: false, error: "Login first"});
+  if(!req.user.admin) return res.json({success: false, error: "Admin access only"});
+  Ground.create(req.body,function(err,ground){
+    console.log(req.body)
+    if(err) res.json({success: false, error: err});
+    else res.json({success: true, ground: ground});
+  });
+});
 module.exports = router;
